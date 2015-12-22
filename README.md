@@ -12,64 +12,62 @@ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
 or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
 for more details.
 
-SETTING UP DEV ENVIRONMENT IN WINDOWS
-	1) Cygwin Install
-	Download and 32 bit Cygwin installer. (setup-x86.exe)
-        Execute installer via command line with the -X argument (setup-x86.exe -X)
-        Add and select "http://prc-tools.sourceforge.net/install" as a download site.
-        Multiselect another download site for the base Cygwin packages.
-        Be sure to install the following packages in the Cygwin installer:
-		1)prc-tools: GCC for Palm OS and related tools
-		2)prc-tools:-arm: GCC for Palm OS on ARM (armlets)
-		3)prc-tools-htmldocs: Documentation for prc-tools, GCC, etc as HTML
-		4)pilrc: Palm OS resource compiler
-		5)make: The GNU version of the 'make' utility
+###SETTING UP DEV ENVIRONMENT IN WINDOWS
+1. Cygwin Install
+  - Download and 32 bit Cygwin installer. (setup-x86.exe)
+  - Execute installer via command line with the -X argument (setup-x86.exe -X)
+  - Add and select "http://prc-tools.sourceforge.net/install" as a download site.
+  - Multiselect another download site for the base Cygwin packages.
+  - Install the latest versions of the following packages in the Cygwin installer:
+    - prc-tools: GCC for Palm OS and related tools
+    - prc-tools:-arm: GCC for Palm OS on ARM (armlets)
+    - prc-tools-htmldocs: Documentation for prc-tools, GCC, etc as HTML
+    - pilrc: Palm OS resource compiler
+    - make: The GNU version of the 'make' utility
 	
-	2) Get Source
-	Clone MMCd repo to a directory on your local machine (C:\PalmDev for example)
+2. Get Source
+  - Clone MMCd repo to a directory on your local machine (C:\PalmDev for example)
 
-	3) Configure Cygwin
-	Launch Cygwin emulation window and register the SDK mount and paths using the following commands:
-		$ mount -f "C:\PalmDev\MMCd" /PalmDev
-		$ palmdev-prep
+3. Configure Cygwin
+  - Launch Cygwin emulation window and register the SDK mount and paths using the following commands:
+    - $ mount -f "C:\PalmDev\MMCd" /PalmDev
+    - $ palmdev-prep
 
-	4) Build MMCd
-	Launch Cygwin emulation window and build MMCd using the following commands:
-		$ cd C:\PalmDev\MMCd
-		$ make
+4. Build MMCd
+  - Launch Cygwin emulation window and build MMCd using the following commands:
+    - $ cd C:\PalmDev\MMCd
+    - $ make
 
-	5) Run MMCd
-	After successful build, click on launchInSimulator.bat to launch MMCd in the Palm Simulator.
-	If the Preferences dialog is displayed, click the home button to return home and launch MMCd.
-	To simulate a data connection change Options -> Preferences -> COM to Simulate in MMCd.
- 
-CHANGELOG
+5. Run MMCd
+  - After successful build, click on launchInSimulator.bat to launch MMCd in the Palm Simulator.
+  - If the Preferences dialog is displayed, click the home button and then launch MMCd.
+  - To simulate a data connection change Options -> Preferences -> COM to Simulate in MMCd.
 
-KNOWN ISSUES:
-	Buttons/checkbox controls can cause delays in log sampling rate
-	mS timing uses a pretty awful hack  - but it works ;)
-	EGRT Slugs don't immediately update - 
+###KNOWN ISSUES:
+- Buttons/checkbox controls can cause delays in log sampling rate
+- mS timing uses a pretty awful hack  - but it works ;)
+- EGRT Slugs don't immediately update
 	
 			
-INVESTIGATION:
-	Min/Max control when monitoring (current Peak is always MAX)
-	User defined prelog / postlog times (need to use Heap to conserve RAM)
-	Consider adding default Autolog triggers (TPS > 80%)
-	Consider adding default Alarm triggers (O2 / Knock)
-	Correct slug for EGRT WBO2 AFR inputs - currently hard coded as MAP  - Fixed V1.8
-	Need to confirm Boost solenoid status display
-	Need to define/implement new log format (mS resolution / Integer / Long / Char )
-	SmartScan to scan slowly changing sensors once/sec
-	Consider adding Reset peak back to Monitor / Paused mode
-	Consider adding 4 bar sensor used on some MAP gauges
+###INVESTIGATION:
+- Min/Max control when monitoring (current Peak is always MAX)
+- User defined prelog / postlog times (need to use Heap to conserve RAM)
+- Consider adding default Autolog triggers (TPS > 80%)
+- Consider adding default Alarm triggers (O2 / Knock)
+- Correct slug for EGRT WBO2 AFR inputs - currently hard coded as MAP  - Fixed V1.8
+- Need to confirm Boost solenoid status display
+- Need to define/implement new log format (mS resolution / Integer / Long / Char )
+- SmartScan to scan slowly changing sensors once/sec
+- Consider adding Reset peak back to Monitor / Paused mode
+- Consider adding 4 bar sensor used on some MAP gauges
 	
-
+###CHANGELOG:
 9-4-05: V1.8c
 - More tweaks to help system
 
 9-4-05: V1.8b
 - Fixed small bug in variable % scaling
-- Fixed description for ISC - Idle speed control  bug in sensor info list
+- Fixed description for ISC - Idle speed control bug in sensor info list
 	
 9-4-05: V1.8a
 - Changed to V1.8 to eliminate any confusion with parallel DSM effort 
@@ -92,12 +90,12 @@ INVESTIGATION:
 8-4-05: V1.7J
 - Fixed AIRT Peak Polarity
 - Fixed AIRT Alarm (Min/Max)
-- (AIRT already graphing correctly from earlier fix)
+  - (AIRT already graphing correctly from earlier fix)
 - Started shell of dynamic allocations to free up some memory
 - Found that "Prefs" var was being declared but never used (waste of static space)
 	
 7-4-05: V1.7I
-- Fixed INJ scan bug (if INJD was last sensor it would halt scanning
+- Fixed INJ scan bug (if INJD was last sensor it would halt scanning)
 - Brute force approach for now - will rip out INJD and provide scaling option in future release
 - Added INJD logic to enabled RPM/INJP
 - Modified 4X display logic so numeric displays can be configured while paused
@@ -120,13 +118,13 @@ INVESTIGATION:
 - baseTime has to be UInt32 otherwise weird things happened
 - Consolidated MMCd.C init code into setDefaults()
 - Powerdown reset clears Peak buffer
-- Disabled DashALarm checkbox in alarm config
+- Disabled DashAlarm checkbox in alarm config
 	
 2-4-05: V1.7e
 - Fixed Min/Max logic on Coolant Alarm setting (reversed)
 - Fixed Min/Max logic on Coolant Peak / Hold (reversed)
 - Switched large number diplay logic back to most recent always in upper left
-- Peak automaticall reset after returning from power-down
+- Peak automatically reset after returning from power-down
 - Hide mode works in review mode - slick
 - Added 4 pt space to right of 4X text
 - Fixed peak logic in simulation
@@ -157,7 +155,7 @@ INVESTIGATION:
 3-1-05: V1.7ac
 - Created "Custom Sensors" menu under "Options"
 - Moved "Custom Sensors" code from "Preferences" to "Custom Sensors" menu
-- Implemented 3/s or DSM vehicle select in "Preferences" to scale timing values
+- Implemented 3/S or DSM vehicle select in "Preferences" to scale timing values
 - Implemented user defined base timing value for those with non stock base timing
 - Removed 1920 and 9600 bps from the "COM" list
 - Added 2148 and 2246 bps to the "Com" list to communicate with overclocked ECU's
@@ -205,7 +203,7 @@ INVESTIGATION:
 - Fixed upside-down temperature graphs
 - Fixed bug in postlog
 - Added 56K high speed baud rate for expansion interface
-- Testing  new sensor definition/scaling
+- Testing new sensor definition/scaling
 	
 24-05-04: v1.6m
 - Added structure to allow user graph scaling (no UI yet)
@@ -235,33 +233,33 @@ INVESTIGATION:
 - Changed panel data to bold to enhance readability
 - Reviewed / modified decimal formatting (significant digits)
 - Known issues
-	Temperature inputs are upside down in graphs 
-	Min/Max reversed on temp inputs
-	Reset peak button overwritten if sampling > 10
+  - Temperature inputs are upside down in graphs 
+  - Min/Max reversed on temp inputs
+  - Reset peak button overwritten if sampling > 10
 
 02-5-04: v1.6i
--AUTOLOG FUNCTION
-	Enable / disable from preferences dialog
-	Autolog triggered by any user defined alarm condition 
-	Postlog currently set at 10 seconds (future release will allow user config)
-	Log control on front panel overrides autolog function
+- AUTOLOG FUNCTION
+  - Enable / disable from preferences dialog
+  - Autolog triggered by any user defined alarm condition 
+  - Postlog currently set at 10 seconds (future release will allow user config)
+  - Log control on front panel overrides autolog function
 - Null data to identify discontinuities in log files
 - Added min/max to large digit display	
 - Known issues
-	Temperature inputs are upside down in graphs 
-	Min/Max reversed on temp inputs
-	Reset peak button overwritten if sampling > 10
+  - Temperature inputs are upside down in graphs 
+  - Min/Max reversed on temp inputs
+  - Reset peak button overwritten if sampling > 10
 
 29-4-04: v1.6h
--PEAK/HOLD
-	Peak mode enabled via new control on monitoring screen
-	Peak mode is enabled / disabled on the fly
-	Peak values are reset from new button on monitoring screen
-	Peak mode does not affect graphs
-	Large display is always live data 
+- PEAK/HOLD
+  - Peak mode enabled via new control on monitoring screen
+  - Peak mode is enabled / disabled on the fly
+  - Peak values are reset from new button on monitoring screen
+  - Peak mode does not affect graphs
+  - Large display is always live data 
 -EGRT SCALING
-	Implemented 0-5V scaling
-	Implemented wideband O2 scaling (0-5V = 10-20 A:F ratio)
+  - Implemented 0-5V scaling
+  - Implemented wideband O2 scaling (0-5V = 10-20 A:F ratio)
 
 13-4-04: v1.6g - cb
 - Added new O2 graph scaling 0-1.25V FS
@@ -283,18 +281,18 @@ INVESTIGATION:
 28-11-03: v1.6c - cb
 - Switches to PAUSE mode when engine is off to allow auto power off 
 - Minor tweaks to menus
-	o Rename / Upload Log
-	o Upload log on next sync
+  - Rename / Upload Log
+  - Upload log on next sync
 - Fixed interesting bug in sensor scaling for negative PSI 
 
 27-11-03: v1.6b - cb
 - Added MAP sesnor confguration under preferences
 - Supports 2.0, 2.5, 3.0 BAR (and scaling for original EGT)
 - Open issues
-	o Consider adding back EGRT tag if people were really using it
-	o Logs do not include scaling info for sensors 	
-	  (Alternative is to define separate MAP sensors tages /scaling)
-	o Sensor scaling / graph scaling / color defined per sensor
+  - Consider adding back EGRT tag if people were really using it
+  - Logs do not include scaling info for sensors
+    - (Alternative is to define separate MAP sensors tages /scaling)
+  - Sensor scaling / graph scaling / color defined per sensor
 
 26-11-03: v1.6a - cb
 - Added MAP sensor capability
@@ -395,10 +393,10 @@ INVESTIGATION:
 - Update user interface
 - Update display of sensors in Hide Unused mode, so that they are
   displayed correctly in column orientation.  As put by Dmitry:
-  1 -     1 -   and not... 1 -     1 -
-  - -     2 -              - -     2 -
-  2 4     3 -              2 4     4 -
-  3 -     4 -              3 -     3 -
+  1 x     1 x   and not... 1 x     1 x
+  x x     2 x              x x     2 x
+  2 4     3 x              2 4     4 x
+  3 x     4 x              3 x    3 x
 - Update optimization wait in main loop by instead using the commented
   code block for EvtGetEvent(...).  This is cleaner and doesn't slow
   down the GUI by sleeping.
@@ -445,6 +443,3 @@ INVESTIGATION:
 - Main form doesn't scroll, so up to 11 logs can be selected
 - Test mode not implemented yet and contains debugging stuff
 - Settings dialog not implemented
-
-
-$Id: README,v 1.14 2003/07/03 10:30:34 dmitry Exp $
