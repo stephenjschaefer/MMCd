@@ -1,0 +1,1 @@
+start "" "%~dp0include\Palm_OS_54_Simulator\PalmSim_54_rel.exe" -rom:"%~dp0include\Palm_OS_54_Simulator\Simulator_Full_enUS_Release.rom" -autoload:"%~dp0mmcd.prc" -cradleporttype:TCP/IP -cradleport:localhost:6420 -skipcalibration:on

@@ -1,0 +1,788 @@
+/* 
+ *  $Id: mmcd.rcp,v 1.17 2003/07/03 10:30:34 dmitry Exp $
+ *
+ *  Copyright (c) 2003, Dmitry Yurtaev <dm1try@umail.ru>
+ *
+ *  This is free software; you can redistribute it and/or modify it under the
+ *  terms of the GNU General Public License as published by the Free Software
+ *  Foundation; either version 2, or (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful, but
+ *  WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+ *  or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ *  for more details.
+ */
+
+#include "resource.h"
+
+/*
+ *  about
+ */
+
+form id aboutDialogId at (2 2 156 156)
+frame modal
+begin
+  title "About MMCd"
+
+  formbitmap at (4 21) bitmap 555
+
+  label "MMCd" autoid at (41 21) font 1
+  label "v. 1.8c" autoid at (prevleft prevtop+11) font 1
+
+  label "Copyright \251 2003, Dmitry Yurtaev" autoid at (5 52)
+  label "dm1try@umail.ru" autoid at (prevleft prevtop+16)
+  label "http://mmcdlogger.sourceforge.net" autoid at (prevleft prevtop+11)
+
+  label "This is free software, and may be" autoid at (5 99)
+  label "redistributed under the GNU GPL." autoid at (prevleft+1 prevtop+11)
+  label "It has absolutely no warranty." autoid at (prevleft prevtop+11)
+
+
+  button "OK" id okButtonId at (center 139 36 auto)
+end
+
+
+iconfamilyex
+compress
+begin
+  bitmap "icons/mmcd1bpp.bmp" bpp 1 transparent 255 255 255
+  bitmap "icons/mmcd4bpp.bmp" bpp 4 transparent 255 255 255
+  bitmap "icons/mmcd8bpp.bmp" bpp 8 transparent 255 255 255
+  bitmap "icons/mmcd8bpp-h.bmp" bpp 8 transparent 255 255 255 density 2
+end
+
+smalliconfamilyex
+compress
+begin
+  bitmap "icons/smmcd1bpp.bmp" bpp 1 transparent 255 255 255
+  bitmap "icons/smmcd4bpp.bmp" bpp 4 transparent 255 255 255
+  bitmap "icons/smmcd8bpp.bmp" bpp 8 transparent 255 255 255
+  bitmap "icons/smmcd8bpp-h.bmp" bpp 8 transparent 255 255 255 density 2 
+end
+
+bitmapfamilyex id 555
+compress
+begin
+  bitmap "icons/mmcd1bpp.bmp" bpp 1 transparent 255 255 255
+  bitmap "icons/mmcd4bpp.bmp" bpp 4 transparent 255 255 255
+  bitmap "icons/mmcd8bpp.bmp" bpp 8 transparent 255 255 255
+  bitmap "icons/mmcd8bpp-h.bmp" bpp 8 transparent 255 255 255 density 2 
+end
+
+font id bigFontId fontid 128 "font/font.txt"
+
+
+/*
+ *  main form
+ */
+
+form id mainFormId at (0 0 160 160)
+menuid mainFormId
+begin
+  title "MMCd"
+
+  scrollbar mainScrollbarId at (right@159 16 7 130) value 0 min 0 max 0 pagesize 11
+  
+  button "New" id newButtonId at (1 bottom@159 40 auto)
+/*
+  button "D" debugButtonId at (right@159 bottom@159 40 auto)
+  button "Test" testButtonId at (right@prevleft-4 bottom@159 40 auto)
+*/
+end
+
+
+menu id mainFormId
+begin
+  pulldown "Mode"
+  begin
+    menuitem "Test..." id testMenuId "T"
+    menuitem "Debug..." id debugMenuId "D"
+  end
+  pulldown "Options"
+  begin
+    menuitem "Alarms..." id alarmsMenuId "A"
+    menuitem "Preferences..." id prefsMenuId "R"
+	menuitem "Sensors..." id customMenuId "C"
+    menuitem "About MMCd" id aboutMenuId
+  end
+  /*
+  pulldown "New"
+  begin
+    menuitem "System Config..." id systemMenuId "S"
+  	menuitem "Sensor Setup..." id sensorMenuId "R"
+  end
+  */
+end
+
+/*
+ *  edit form
+ */
+
+form id editFormId at (0 0 160 160)
+menuid editFormId
+begin
+  title "MMCd"
+
+
+  pushbutton "1" bank1ButtonId at (108 2 9 9) group bankGroupId
+  pushbutton "2" bank2ButtonId at (118 2 9 9) group bankGroupId
+  pushbutton "3" bank3ButtonId at (128 2 9 9) group bankGroupId
+  pushbutton "4" bank4ButtonId at (138 2 9 9) group bankGroupId
+
+/*  
+  pushbutton "1" bank1ButtonId at (88 2 9 9) group bankGroupId
+  pushbutton "2" bank2ButtonId at (98 2 9 9) group bankGroupId
+  pushbutton "3" bank3ButtonId at (108 2 9 9) group bankGroupId
+  pushbutton "4" bank4ButtonId at (118 2 9 9) group bankGroupId
+  pushbutton "5" bank5ButtonId at (128 2 9 9) group bankGroupId
+  pushbutton "6" bank6ButtonId at (138 2 9 9) group bankGroupId 
+*/    
+  pushbutton "H" hideUnusedButtonId at (150 2 9 9)
+
+  label "                               " id timeLabelId at (0 58) nonusable
+
+/* New Peak Checkbox option 
+*/
+  checkbox "Graph" graphCheckId at (39 58 auto 11) nonusable
+  checkbox "Peak" peakCheckId at (0 58 auto 11) nonusable
+  checkbox "Log" logCheckId at (83 58 auto 11) nonusable
+  checkbox "Pause" pauseCheckId at (right@159 58 auto 11) nonusable
+
+/* Old checkbox options
+  checkbox "Graph" graphCheckId at (0 58 auto 11) nonusable
+  checkbox "Log" logCheckId at (63 58 auto 11) nonusable
+  checkbox "Pause" pauseCheckId at (right@159 58 auto 11) nonusable
+*/
+  scrollbar id scrollBarId at (0 136 160 7)
+
+  pushbutton "Monitor" monitorButtonId at (right@159 bottom@159 auto auto) group modeGroupId
+  pushbutton "Review" reviewButtonId at (right@prevleft-1 bottom@159 auto auto) group modeGroupId
+
+  button "Done" doneButtonId at (1 bottom@159 36 auto)
+/*
+  button "Reset" peakButtonId at (44 bottom@159 36 auto)
+*/
+  button "Reset" peakButtonId at (48 bottom@159 32 auto)
+end
+
+
+menu id editFormId
+begin
+  pulldown "Log"
+  begin
+    menuitem "Rename/Upload Log..." id renameLogMenuId "N"
+    menuitem "Delete Log..." id deleteLogMenuId "D"
+    menuitem "Truncate Log..." id truncateLogMenuId "T"
+  end
+  pulldown "Options"
+  begin
+    menuitem "Alarms..." id alarmsMenuId "A"
+    menuitem "Preferences..." id prefsMenuId "R"
+	menuitem "Sensors..." id customMenuId "C"
+    menuitem "About MMCd" id aboutMenuId
+  end
+  /*
+  pulldown "New"
+  begin
+    menuitem "System Config..." id systemMenuId "S"
+  	menuitem "Sensor Setup..." id sensorMenuId "R"
+  end
+  */
+end
+
+
+/*
+ *  test form
+ */
+
+form id testFormId at (0 0 160 160)
+menuid testFormId
+begin
+  title "MMCd - Test"
+
+  label "DTCs"      id faultsLabelId at (right@38 17)
+  button "Read"     id readFaultsButtonId at (42 prevtop 57 auto)
+  button "Erase"    id eraseFaultsButtonId at (prevright+3 prevtop 57 auto)
+
+  label "Active"    id currentFaultsLabelId at (right@38 32)
+  label "Stored"    id storedFaultsLabelId at (right@38 53)
+  label "Meaning"   id meaningLabelId at (right@38 74)
+  label "                                 " id descrLabelId at (42 74)
+  
+  label "Fuel"      id fuelLabelId at (right@38 115)
+  button "Pump"     id pumpButtonId     at (42 prevtop 37 auto)
+  button "Pres-re"  id pressureButtonId at (prevright+3 prevtop 37 auto)
+  button "MVIC"     id mvicButtonId at (prevright+3 prevtop 37 auto)
+  
+  label "Solenoids" id solLabelId at (right@39 100)
+  button "Purge"    id purgeButtonId    at (42 prevtop 37 auto)
+  button "EGR"      id egrButtonId    at (prevright+3 prevtop 37 auto)
+  button "Boost"    id boostButtonId      at (prevright+3 prevtop 37 auto)
+  
+  label "Injectors" id injLabelId at (right@39 130)
+  button "1" inj1ButtonId at (42 prevtop auto auto)
+  button "2" inj2ButtonId at (prevright+3 prevtop auto auto)
+  button "3" inj3ButtonId at (prevright+3 prevtop auto auto)
+  button "4" inj4ButtonId at (prevright+3 prevtop auto auto)
+  button "5" inj5ButtonId at (prevright+3 prevtop auto auto)
+  button "6" inj6ButtonId at (prevright+3 prevtop auto auto)
+
+  button "Done" doneButtonId at (1 bottom@159 40 auto)
+end
+
+menu id testFormId
+begin
+  pulldown "Options"
+  begin
+    menuitem "Alarms..." id alarmsMenuId "A"
+    menuitem "Preferences..." id prefsMenuId "R"
+	menuitem "Custom Sensors..." id customMenuId "C"
+    menuitem "About MMCd" id aboutMenuId
+  end
+  /*
+  pulldown "New"
+  begin
+    menuitem "System Config..." id systemMenuId "S"
+  	menuitem "Sensor Setup..." id sensorMenuId "R"
+  end
+  */
+end
+
+/* 
+ *  debug form
+ */
+
+form id debugFormId at (0 0 160 160)
+menuid debugFormId
+begin
+  title "MMCd - Debug"
+
+  pushbutton "1" bank1ButtonId at (108 2 9 9) group bankGroupId
+  pushbutton "2" bank2ButtonId at (118 2 9 9) group bankGroupId
+  pushbutton "3" bank3ButtonId at (128 2 9 9) group bankGroupId
+  pushbutton "4" bank4ButtonId at (138 2 9 9) group bankGroupId
+
+  field id debugFieldId at (4 100 145 44) underlined multiplelines maxchars 1024 hasscrollbar
+  scrollbar id scrollBarId at (right@159 prevtop 7 prevheight) min 0 max 0 pagesize 4
+
+  button "Done" doneButtonId at (1 bottom@159 40 auto)
+end
+
+menu id debugFormId
+begin
+  pulldown "Options"
+  begin
+    menuitem "Alarms..." id alarmsMenuId "A"
+    menuitem "Preferences..." id prefsMenuId "R"
+	menuitem "Custom Sensors..." id customMenuId "C"
+    menuitem "About MMCd" id aboutMenuId
+  end
+  /*
+  pulldown "New"
+  begin
+    menuitem "System Config..." id systemMenuId "S"
+  	menuitem "Sensor Setup..." id sensorMenuId "R"
+  end
+  */
+end
+
+/* 
+ *  alerts
+ */
+
+alert id versionAlertId
+  error
+begin
+  title "Error"
+  message "This software requires PalmOS 3.5 or newer"
+  buttons "Exit"
+end
+
+alert id newLogAlertId
+  defaultbutton 1
+  confirmation
+begin
+  title "New Log"
+  message "Create new Log?"
+  buttons "Yes" "No"
+end
+
+form id renameLogFormId at (2 bottom@158 156 90)
+frame modal
+defaultbtnid cancelButtonId
+begin
+  title "Rename Log"
+  label "New log name" autoid at (5 18) font 1
+  field id newNameFieldId at (5 35 145 auto) underlined autoshift maxchars 31
+  checkbox "Upload Log via HotSync" id backupLogCheckId at (center 53 auto auto) font 1
+  button "Ok" id okButtonId at (5 bottom@85 36 auto)
+  button "Cancel" id cancelButtonId at (prevright+6 prevtop 36 auto)
+end
+
+alert id deleteLogAlertId
+  defaultbutton 1
+  warning
+begin
+  title "Delete Log"
+  message "Delete current log?"
+  buttons "Yes" "No"
+end
+
+alert id truncateLogAlertId
+  defaultbutton 1
+  warning
+begin
+  title "Truncate Log"
+  message "Erase current log data?"
+  buttons "Yes" "No"
+end
+
+alert id eraseFaultsAlertId
+  defaultbutton 1
+  confirmation
+begin
+  title "Erase DTCs"
+  message "Erase memorized DTCs?"
+  buttons "Yes" "No"
+end
+
+/*
+ *  preferences
+ */
+
+form id prefsDialogId at (2 bottom@158 156 146)
+frame modal
+helpid prefsDialogId
+begin
+  title "Preferences"
+
+  label "COM:" autoid at (right@70 17) font 1
+  popuptrigger "Simulate" id speedTriggerId at (prevright+3 prevtop auto auto) leftanchor
+  list "Simulate" "1920 bps" "1953 bps" "2148 bps" "2193 bps" "2246 bps" "8192 bps" "19200 bps" "38400 bps" "57600 bps" id speedListId at (prevleft+13 prevtop auto auto) visibleitems 5 nonusable
+  popuplist id speedTriggerId speedListId
+
+  label "Units:" autoid at (right@70 prevtop+13) font 1
+  popuptrigger "Metric" id unitTriggerId at (prevright+3 prevtop auto auto) leftanchor
+  list "Metric" "English" "Numeric" id unitListId at (prevleft+13 prevtop auto auto) 
+  visibleitems 3 nonusable
+  popuplist id unitTriggerId unitListId
+ 
+  label "EGRT:" autoid at (right@70 prevtop+13) font 1
+  popuptrigger "3.0 BAR" id egtinputTriggerId at (prevright+3 prevtop auto auto) leftanchor
+  list "3.0 BAR" "2.5 BAR" "2.0 BAR" "Wideband O2" "EGRT" "0-5V"  id egtinputListId at (prevleft+13 prevtop auto auto) 
+  visibleitems 6   nonusable
+  popuplist id egtinputTriggerId egtinputListId
+  
+  label "Vehicle:" autoid at (right@70 prevtop+13) font 1
+  popuptrigger "3/S" id vehicleTriggerId at (prevright+3 prevtop auto auto) leftanchor
+  list "3/S" "DSM" id vehicleListId at (prevleft+13 prevtop auto auto)
+  visibleitems 2 nonusable
+  popuplist id vehicleTriggerId vehicleListId
+  
+  label "ECU Clock:" autoid at (right@70 prevtop+13) font 1
+  popuptrigger "100%" id clockTriggerId at (prevright+3 prevtop auto auto) leftanchor
+  list "100%" "110%" "112%" "115%" clockListId at (prevleft+13 prevtop auto auto)
+  visibleitems 4 nonusable
+  popuplist id clockTriggerId clockListId
+   
+  label "Base Time:" autoid at (right@70 prevtop+13) font 1
+  popuptrigger "5°" id baseTriggerId at (prevright+3 prevtop auto auto) leftanchor
+  list "0°" "1°" "2°" "3°" "4°" "5°" "6°" "7°" "8°" "9°" "10°" "11°" "12°" "13°" "14°" "15°" id baseListId at (prevleft+13 prevtop auto auto)
+  visibleitems 6 nonusable
+  popuplist id baseTriggerId baseListId
+  
+  label "Alarms:" autoid at (right@60 prevtop+13) font 1
+  checkbox "" id alarmsCheckId at (prevright+3 prevtop auto auto)
+  
+  label "O2 NonLin:" autoid at (right@135 prevtop) font 1
+  checkbox "" id o2NonLinCheckId at (prevright+3 prevtop auto auto)
+  
+  label "AutoLog:" autoid at (right@60 prevtop+13) font 1
+  checkbox "" id autologCheckId at (prevright+3 prevtop auto auto)
+
+  button "OK" id okButtonId at (1 bottom@140 36 auto)
+  button "Cancel" id cancelButtonId at (prevright+7 prevtop 36 auto)
+  button "Default" id defaultButtonId at (prevright+7 prevtop 36 auto)
+
+/*  checkbox "Compatible graphics" id compatibleGraphicsId at (center prevtop+13 auto auto) font 1 */
+
+end
+
+
+string id prefsDialogId
+	"COM:\nSelect 1920 or 1953 for direct connect to 1G ECU. Higher baud rates can only be used with custom hardware interfaces like the HSLogger expansion. HSLogger provides higher sampling rates, vehicle speed and additional sensor inputs.\n\n" \
+	"Simulate allows testing without an ECU connection.\n\n" \
+	"Units:\nDisplay Metric or English units.\n\n" \
+	"EGRT:\nAllows selection of scaling for user provided sensors connected to unused EGRT input on 1G Federal ECU. \n\nWBO2 is scaled so a 0-5V input = 8.0 -22.0 AF.\n\n" \
+	"Vehicle:\nSelect 3S or DSM for proper timing calculation.\n\n" \
+	"ECU CLK:\nRe-scale RPM and AIRF for overclocked ECU. For normal ECU this should be 100%.\n\nCorrect COM: value must also be selected when connecting directly to ECU\n\n" \
+	"BaseTime:\nAllows entry of actual base engine timing. Default is 5° \n\n" \
+	"Alarms:\nMaster on/off control for audible alarms\n\n" \
+	"O2 NonLin:\nNon linear O2 graphing to amplify .80 - 1.0V+ range of O2 sensor for easier viewing.\n\n" \
+	"AutoLog:\nAutomatic logging operation based on alarm triggers - See Alarm configuration for more info.\n\n" \
+	"DEFAULT\nRestore original config\n\n" \	
+	
+	"\STANDARD SENSORS\n\n" \
+	"\225 FLG0 \n" \
+	"        A: Air conditioning relay\n"\	
+	"        F: Fuel pump relay\n"\		
+	"        B: Boost solenoid\n"\		
+
+	"\225 FLG2\n"\
+	"        T: Top Dead Center\n"\
+	"        S: PS Load Switch\n"\		
+	"        A: AC Load Switch\n"\	
+	"        N: Neutral \n"\
+	"        I: Idle Switch\n"\	
+	
+	"\225 TIMA	- Timing advance\n" \
+	"\225 COOL	- Coolant temp\n" \
+	"\225 FTRL	- Fuel trim low\n" \
+	"\225 FTRM	- Fuel trim middle\n" \
+	"\225 FTRH	- Fuel trim high\n" \
+	"\225 FTO2	- O2 feedback trim\n" \
+	"\225 EGRT	- EGR temp\n" \
+	"\225 O2-F	- Front O2 sensor\n" \
+	"\225 O2-R	- Rear O2 sensor\n" \
+	"\225 BATT	- Battery\n" \
+	"\225 BARO	- Barometer\n" \
+	"\225 ISC	- Idle speed control\n" \
+	"\225 TPS	- Throttle position\n" \
+	"\225 MAFS	- Air flow HZ\n" \
+	"\225 ACLE	- Accel enrichment\n" \
+	"\225 RPM	- Engine speed\n" \
+	"\225 KNCK	- Knock sum\n" \
+	"\225 INJP	- Injector pulse\n" \
+	"\225 INJD	- Injector duty\n" \
+	"\225 AIRV	- Air volume\n" \
+	"\225 AIRT	- Air temp\n\n" \
+	
+	"HSLogger Expansion Inputs\n\n"\	
+	"\225 VSPD	- Vehicle speed\n"\
+	"\225 FUEL	- Fuel pressure\n"\
+	"\225 OILP	- Oil pressure\n"\
+	"\225 WBO2	- WideBand O2\n"\
+	"\225 EGT	- Exhaust gas temp\n"\
+	"\225 PLEN	- Intake air temp\n"\
+	"\225 OILT	- Oil temp\n"	\
+	"\225 PUMP	- Fuel pump voltage\n"	
+	
+stringtable id faultStringsId ""
+	"(11) Oxygen sensor"
+	"(12) MAFS"
+	"(13) Air temperature sensor"
+	"(14) TPS"
+	"(15) ISC postion sensor"
+	"(21) Coolant temp sensor"
+	"(22) Crank angle sensor"
+	"(23) TDC sensor"
+	"(24) Vehicle speed sensor"
+	"(25) Barometric sensor"
+	"(31) Knock sensor"
+	"(41) Injector circuit"
+	"(42) Fuel pump relay"
+	"(43) EGR"
+	"(44) Ignition coil"
+	"(36) Ignition circuit"
+	"None"
+	"Serial comm error"
+	"ECU comm error"
+
+/*
+ *  alarms form
+ */
+
+bitmap id threshBackBitmapId "icons/slider-back.bmp" 
+
+bitmapfamilyex id threshThumbBitmapId
+begin
+  bitmap "icons/slider-thumb.bmp" bpp 1 
+  bitmap "icons/slider-thumb-h.bmp" bpp 1 density 2
+end
+
+/* bitmap id threshThumbBitmapId "icons/slider-thumb.bmp" */
+
+form id alarmsFormId at (2 bottom@158 156 145)
+frame modal
+helpid alarmsFormId
+
+begin
+  title "Alarms"
+
+  label "Sensor:" autoid at (right@63 16) font 1
+  popuptrigger "" id alarmTriggerId at (prevright+5 prevtop auto auto) leftanchor font 1
+  list "" id alarmListId at (prevleft+13 prevtop 50 auto) visibleitems 7 nonusable
+  popuplist id alarmTriggerId alarmListId
+
+  label "Sound:" autoid at (right@63 prevtop+16) font 1
+  pushbutton "Off" sound0ButtonId at (prevright+5 prevtop 34 11) group soundGroupId
+  pushbutton "1" sound1ButtonId at (prevright+1 prevtop 11 11) group soundGroupId
+  pushbutton "2" sound2ButtonId at (prevright+1 prevtop 11 11) group soundGroupId
+  pushbutton "3" sound3ButtonId at (prevright+1 prevtop 11 11) group soundGroupId
+  pushbutton "4" sound4ButtonId at (prevright+1 prevtop 11 11) group soundGroupId
+
+  slider id threshSliderId at (64 prevtop+15 90 11) feedback min 0 max 255 pagesize 1 backgroundid threshBackBitmapId thumbid threshThumbBitmapId
+
+  label "Threshold:" autoid at (right@63 prevtop+15) font 1
+  selectortrigger ">" id threshSignButtonId at (prevright+5 prevtop 11 11)
+  label "         " id threshFieldId at (prevright+5 prevtop) font 1
+  
+  label "LogTrigger:" autoid at (right@63 prevtop+15) font 1
+  checkbox "" id triggerCheckId at (prevright prevtop auto auto)
+  
+/*
+  label "DashAlarm:" autoid at (right@63 prevtop+15) font 1
+  checkbox "" id visualCheckId at (prevright prevtop auto auto)
+
+  label "FuelCut:" autoid at (prevright+4 prevtop)  font 1
+  checkbox "" id fuelCutCheckId at (prevright prevtop auto auto)
+*/
+   
+  button "OK" id okButtonId at (1 bottom@140 36 auto)
+
+end
+
+
+string id alarmsFormId
+	"Alarm Configuration\n\n"\
+	"\225 Sensor\nSelect sensor for alarm setup. You can configure multiple sensors without closing the dialog. Sensors with alarms are marked with a # sign.\n\n"\
+	"\225 Sound\nSelect alarm tone 1-4 or Off\n\n"\
+	"\225 Toggle < or >\n Select alarm polarity\n\n"\
+	"\225 Threshold\nSelect alarm level by using slider or tap to left/right of slider bar for fine control\n\n"\
+	"\225 LogTrigger\nStart logging when alarm is triggered. For example, you could configure a silent alarm to start logging whenever TPS > 50% or RPM > 4000.\n\n"\
+	"Autolog includes a pre-trigger to capture 2-3 seconds of data BEFORE the tigger occurs. The log will stop 30 seconds after the alarm condition has ended. The log can also be started/stopped manually.\n"
+
+/*
+ * System Configuration
+ */
+ 
+/* 
+ form id systemFormId at (0 0 160 160)
+ begin
+   title "MMCd - System Config"
+    
+   label "COM:" autoid at (5 16) font 1
+   popuptrigger "1920 bps" id speedTriggerId at (prevright+3 prevtop auto auto) leftanchor
+   list "1920 bps" "1953 bps" "8192 bps" "9600 bps" "19200 bps" "38400 bps" "57600 bps" "Simulate" id speedListId at (prevleft+13 prevtop auto auto) visibleitems 5 nonusable
+   popuplist id speedTriggerId speedListId
+   
+   label "Units:" autoid at (5 prevtop+11) font 1
+   popuptrigger "Metric" id unitTriggerId at (prevright+3 prevtop auto auto) leftanchor
+   list "Metric" "English" "Numeric" id unitListId at (prevleft+13 prevtop auto auto) 
+   visibleitems 3 nonusable
+   popuplist id unitTriggerId unitListId
+   
+   label "Vehicle:" autoid at (5 prevtop+11) font 1
+   popuptrigger "DSM" id vehicleTriggerId at (prevright+3 prevtop auto auto) leftanchor
+   list "DSM" "3/S" id vehicleListId at (prevleft+13 prevtop auto auto)
+   visibleitems 2 nonusable
+   popuplist id vehicleTriggerId vehicleListId
+   
+   label "Base Timing:" autoid at (5 prevtop+11) font 1
+   popuptrigger "5°" id baseTriggerId at (prevright+3 prevtop auto auto) leftanchor
+   list "5°" "6°" "7°" "8°" "9°" "10°" id baseListId at (prevleft+13 prevtop auto auto)
+   visibleitems 6 nonusable
+   popuplist id baseTriggerId baseListId
+   
+   label "Alarms:" autoid at (5 prevtop+15) font 1
+   checkbox "" id alarmsCheckId at (prevright+2 prevtop auto auto)
+   
+   label "AutoLog:" autoid at (5 prevtop+11) font 1
+   checkbox "" id autologCheckId at (prevright+2 prevtop auto auto)
+   
+   label "SmartScan:" autoid at (5 prevtop+11) font 1
+   checkbox "" id smartscanCheckId at (prevright+2 prevtop auto auto)
+   
+   label "Pre-Log:" autoid at (5 prevtop+15) font 1
+   field id userPrelogId    +1 at (prevright+2 prevtop 25 auto) editable underlined singleline maxchars 5
+   label "Samples" autoid at (prevright+2 prevtop) font 1
+   
+   label "Post-Log:" autoid at (5 prevtop+11) font 1
+   field id userPostlogId    +1 at (prevright+2 prevtop 25 auto) editable underlined singleline maxchars 5
+   label "Samples" autoid at (prevright+2 prevtop) font 1
+   
+   label "Log Rate:" autoid at (5 prevtop+11) font 1
+   field id userLograteId    +1 at (prevright+2 prevtop 15 auto) editable underlined singleline maxchars 3
+   label "Samples/Sec." autoid at (prevright+2 prevtop) font 1
+   
+   label "Display Rate:" autoid at (5 prevtop+11) font 1
+   field id userDisplayrateId    +1 at (prevright+2 prevtop 15 auto) editable underlined singleline maxchars 3
+   label "Samples/Sec." autoid at (prevright+2 prevtop) font 1
+   
+   button "Done" id doneButtonId at (1 bottom@159 36 auto)
+ end
+ 
+*/
+
+
+ /*
+  * Sensor Setup
+  */
+  
+  
+/*
+ 
+form id sensorFormId at (0 0 160 160)
+
+ begin
+   title "Sensor Setup"
+   
+   label "Sensor:" autoid at (5 17) font 1
+   popuptrigger "" id alarmTriggerId at (prevright+5 prevtop auto auto) leftanchor font 1
+   list "" id alarmListId at (prevleft+13 prevtop 50 auto) visibleitems 7 nonusable
+   popuplist id alarmTriggerId alarmListId
+   
+   label "PID:" autoid at (5 prevtop+11) font 1
+   field id userPidId    +1 at (prevright+2 prevtop 11 auto) editable underlined singleline maxchars 2
+   
+   label "Tag:" autoid at (prevright+5 prevtop) font 1
+   field id userTagId    +1 at (prevright+2 prevtop 23 auto) editable underlined singleline maxchars 4
+   
+   label "Units:" autoid at (prevright+5 prevtop) font 1
+   field id userUnitId    +1 at (prevright+2 prevtop 17 auto) editable underlined singleline maxchars 3
+   
+   label "Scale:" autoid at (5 prevtop+11) font 1
+   field id userScaleId    +1 at (prevright+2 prevtop 23 auto) editable underlined singleline maxchars 4
+   
+   label "Offset:" autoid at (prevright+5 prevtop) font 1
+   field id userOffsetId    +1 at (prevright+2 prevtop 23 auto) editable underlined singleline maxchars 4
+   
+   label "G Scale:" autoid at (5 prevtop+11) font 1
+   field id userGRScaleId    +1 at (prevright+2 prevtop 23 auto) editable underlined singleline maxchars 4
+   
+   label "G Offset:" autoid at (prevright+5 prevtop) font 1
+   field id userGROffsetId    +1 at (prevright+2 prevtop 23 auto) editable underlined singleline maxchars 4
+
+   label "G Color:" autoid at (5 prevtop+11) font 1
+   field id userColorId    +1 at (prevright+2 prevtop 17 auto) editable underlined singleline maxchars 3
+    
+   label "" id sensorTagId at (5 prevtop+27) font 1
+   selectortrigger ">" id threshSignButtonId at (prevright+32 prevtop 11 11)
+   label "         " id threshFieldId at (prevright+5 prevtop) font 1
+   
+   slider id threshSliderId at (5 prevtop+15 90 11) feedback min 0 max 255 pagesize 1 backgroundid threshBackBitmapId thumbid threshThumbBitmapId
+   
+   pushbutton "Off" sound0ButtonId at (6 prevtop+15 34 11) group soundGroupId
+   pushbutton "1" sound1ButtonId at (prevright+1 prevtop 11 11) group soundGroupId
+   pushbutton "2" sound2ButtonId at (prevright+1 prevtop 11 11) group soundGroupId
+   pushbutton "3" sound3ButtonId at (prevright+1 prevtop 11 11) group soundGroupId
+   pushbutton "4" sound4ButtonId at (prevright+1 prevtop 11 11) group soundGroupId
+   
+   label "<-Alarm Tone" autoid at (prevright+3 prevtop) font 1
+   
+   label "Audible" autoid at (5 prevtop+15) font 1
+   checkbox "" id audibleCheckId at (prevright prevtop auto auto)
+   
+   label "Visual" autoid at (prevright-2 prevtop) font 1
+   checkbox "" id visualCheckId at (prevright prevtop auto auto)
+   
+   label "Autolog" autoid at (prevright-2 prevtop) font 1
+   checkbox "" id autoCheckId at (prevright prevtop auto auto)
+   
+   button "OK" id doneButtonId at (1 bottom@140 36 auto)
+ end
+ 
+ */
+
+ 
+ /*
+  * Custom Sensor
+  */
+  
+form id customFormId at (2 bottom@158 156 146)
+frame modal
+helpid customFormId
+
+begin
+  title "Sensors"
+  
+  label "User Defined Sensors - ECU Registers" autoid at (3 12)
+  
+  checkbox "" id customSensorId     at (3 27 auto auto)
+  field id customSensorId    +1 at (prevright-2 prevtop 14 auto) editable underlined singleline maxchars 2
+  field id customSensorId    +2 at (prevright+5 prevtop 32 auto) editable underlined singleline maxchars 4
+
+  checkbox "" id customSensorId+3   at (83 prevtop auto auto)
+  field id customSensorId+  3+1 at (prevright-2 prevtop 14 auto) editable underlined singleline maxchars 2
+  field id customSensorId+  3+2 at (prevright+5 prevtop 32 auto) editable underlined singleline maxchars 4
+
+  checkbox "" id customSensorId+6   at (3 prevbottom auto auto)
+  field id customSensorId+  6+1 at (prevright-2 prevtop 14 auto) editable underlined singleline maxchars 2
+  field id customSensorId+  6+2 at (prevright+5 prevtop 32 auto) editable underlined singleline maxchars 4
+
+  checkbox "" id customSensorId+9   at (83 prevtop auto auto)
+  field id customSensorId+  9+1 at (prevright-2 prevtop 14 auto) editable underlined singleline maxchars 2
+  field id customSensorId+  9+2 at (prevright+5 prevtop 32 auto) editable underlined singleline maxchars 4
+
+  checkbox "" id customSensorId+12  at (3 prevbottom auto auto)
+  field id customSensorId+ 12+1 at (prevright-2 prevtop 14 auto) editable underlined singleline maxchars 2
+  field id customSensorId+ 12+2 at (prevright+5 prevtop 32 auto) editable underlined singleline maxchars 4
+
+  checkbox "" id customSensorId+15  at (83 prevtop auto auto)
+  field id customSensorId+ 15+1 at (prevright-2 prevtop 14 auto) editable underlined singleline maxchars 2
+  field id customSensorId+ 15+2 at (prevright+5 prevtop 32 auto) editable underlined singleline maxchars 4
+
+  checkbox "" id customSensorId+18  at (3 prevbottom auto auto)
+  field id customSensorId+ 18+1 at (prevright-2 prevtop 14 auto) editable underlined singleline maxchars 2
+  field id customSensorId+ 18+2 at (prevright+5 prevtop 32 auto) editable underlined singleline maxchars 4
+
+  checkbox "" id customSensorId+21  at (83 prevtop auto auto)
+  field id customSensorId+ 21+1 at (prevright-2 prevtop 14 auto) editable underlined singleline maxchars 2
+  field id customSensorId+ 21+2 at (prevright+5 prevtop 32 auto) editable underlined singleline maxchars 4
+  
+  label "*Click on the 'i' in the upper left" autoid at (5 prevtop+20)
+  label "hand corner for descriptions of" autoid at (prevleft prevtop+11) 
+  label "of standard / HSLoggger sensors" autoid at (prevleft prevtop+11)   
+  
+  button "OK" id doneButtonId at (1 bottom@140 36 auto)
+
+/*  checkbox "Compatible graphics" id compatibleGraphicsId at (center prevtop+13 auto auto) font 1 */
+
+end
+  
+string id customFormId
+	
+	"\STANDARD SENSORS\n\n" \
+	"\225 FLG0 \n" \
+	"        A: Air conditioning relay\n"\	
+	"        F: Fuel pump relay\n"\		
+	"        B: Boost solenoid\n"\		
+
+	"\225 FLG2\n"\
+	"        T: Top Dead Center\n"\
+	"        S: PS Load Switch\n"\		
+	"        A: AC Load Switch\n"\	
+	"        N: Neutral \n"\
+	"        I: Idle Switch\n"\	
+	
+	"\225 TIMA	- Timing advance\n" \
+	"\225 COOL	- Coolant temp\n" \
+	"\225 FTRL	- Fuel trim low\n" \
+	"\225 FTRM	- Fuel trim middle\n" \
+	"\225 FTRH	- Fuel trim high\n" \
+	"\225 FTO2	- O2 feedback trim\n" \
+	"\225 EGRT	- EGR temp\n" \
+	"\225 O2-F	- Front O2 sensor\n" \
+	"\225 O2-R	- Rear O2 sensor\n" \
+	"\225 BATT	- Battery\n" \
+	"\225 BARO	- Barometer\n" \
+	"\225 ISC	- Idle speed control\n" \
+	"\225 TPS	- Throttle position\n" \
+	"\225 MAFS	- Air flow HZ\n" \
+	"\225 ACLE	- Accel enrichment\n" \
+	"\225 RPM	- Engine speed\n" \
+	"\225 KNCK	- Knock sum\n" \
+	"\225 INJP	- Injector pulse\n" \
+	"\225 INJD	- Injector duty\n" \
+	"\225 AIRV	- Air volume\n" \
+	"\225 AIRT	- Air temp\n\n" \
+	
+	"HSLogger Expansion Inputs\n\n"\	
+	"\225 VSPD	- Vehicle speed\n"\
+	"\225 FUEL	- Fuel pressure\n"\
+	"\225 OILP	- Oil pressure\n"\
+	"\225 WBO2	- WideBand O2\n"\
+	"\225 EGT	- Exhaust gas temp\n"\
+	"\225 PLEN	- Intake air temp\n"\
+	"\225 OILT	- Oil temp\n"	\
+	"\225 PUMP	- Fuel pump voltage\n"	

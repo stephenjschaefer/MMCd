@@ -1,0 +1,116 @@
+[MMCd] MemoryMgr.c, Line:3651, NULL handle
+[MMCd] MemoryMgr.c, Line:3651, NULL handle
+[MMCd] mmcd.c, Line:1718, Unknown form!
+[MMCd] mmcd.c, Line:1718, Unknown form!
+[MMCd] mmcd.c, Line:1718, Unknown form!
+[MMCd] mmcd.c, Line:1718, Unknown form!
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:1642, Index out of range
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:1642, Index out of range
+[MMCd] MemoryMgr.c, Line:3651, NULL handle
+[MMCd] mmcd.c, Line:1718, Unknown form!
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:1642, Index out of range
+[MMCd] MemoryMgr.c, Line:3651, NULL handle
+[MMCd] MemoryMgr.c, Line:3651, NULL handle
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:1642, Index out of range
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:1642, Index out of range
+[MMCd] UIResource.c, Line:230, Menu rsrc not found
+[MMCd] UIResource.c, Line:230, Menu rsrc not found
+[MMCd] UIResource.c, Line:230, Menu rsrc not found
+[MMCd] UIResource.c, Line:230, Menu rsrc not found
+[MMCd] mmcd.c, Line:1719, Unknown form!
+[MMCd] mmcd.c, Line:1719, Unknown form!
+[MMCd] Event.c, Line:201, Event queue full
+[MMCd] Event.c, Line:201, Event queue full
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:2027, Invalid ptr: 00000A28
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:2027, Invalid ptr: 00000A28
+[MMCd] MemoryMgr.c, Line:3651, NULL handle
+[MMCd] mmcd.c, Line:1730, Unknown form!
+[MMCd] mmcd.c, Line:1730, Unknown form!
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:2027, Invalid ptr: 00000000
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:2027, Invalid ptr: 00000000
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:2027, Invalid ptr: 00000A29
+[MMCd] Form.c, Line:5619, No form to return to
+[MMCd] Form.c, Line:5619, No form to return to
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:2027, Invalid ptr: 00000000
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:2027, Invalid ptr: 00000000
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:2027, Invalid ptr: 00000000
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:2027, Invalid ptr: 00000000
+[MMCd] MemoryMgr.c, Line:3651, NULL handle
+[MMCd] MemoryMgr.c, Line:3651, NULL handle
+[MMCd] MemoryMgr.c, Line:3651, NULL handle
+[MMCd] MemoryMgr.c, Line:3651, NULL handle
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Form68K.c, Line:1750, No current form
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Form68K.c, Line:1750, No current form
+[MMCd] MemoryMgr.c, Line:3651, NULL handle
+[MMCd] MemoryMgr.c, Line:3651, NULL handle
+[MMCd] mmcd.c, Line:2004, Unknown form!
+[MMCd] mmcd.c, Line:2037, Unknown form!
+[MMCd] mmcd.c, Line:2041, Unknown form!
+[MMCd] mmcd.c, Line:2041, Unknown form!
+[MMCd] MemoryMgr.c, Line:3651, NULL handle
+[MMCd] MemoryMgr.c, Line:3651, NULL handle
+[MMCd] MemoryMgr.c, Line:3651, NULL handle
+[MMCd] MemoryMgr.c, Line:3651, NULL handle
+[MMCd] mmcd.c, Line:2042, Unknown form!
+[MMCd] mmcd.c, Line:2042, Unknown form!
+[MMCd] mmcd.c, Line:2041, Unknown form!
+[MMCd] MemoryMgr.c, Line:3651, NULL handle
+[MMCd] mmcd.c, Line:2042, Unknown form!
+[MMCd] mmcd.c, Line:2042, Unknown form!
+[MMCd] mmcd.c, Line:2042, Unknown form!
+[MMCd] mmcd.c, Line:2042, Unknown form!
+[MMCd] mmcd.c, Line:2042, Unknown form!
+[MMCd] mmcd.c, Line:2042, Unknown form!
+[MMCd] mmcd.c, Line:2042, Unknown form!
+[MMCd] mmcd.c, Line:2042, Unknown form!
+[MMCd] UIResource.c, Line:230, Menu rsrc not found
+[MMCd] UIResource.c, Line:230, Menu rsrc not found
+[MMCd] Form.c, Line:5619, No form to return to
+[MMCd] Form.c, Line:5619, No form to return to
+[MMCd] UIResource.c, Line:230, Menu rsrc not found
+[MMCd] MemoryMgr.c, Line:3651, NULL handle
+[MMCd] UIResource.c, Line:230, Menu rsrc not found
+[MMCd] Form.c, Line:5619, No form to return to
+[MMCd] Form.c, Line:5619, No form to return to
+[MMCd] MemoryMgr.c, Line:3651, NULL handle
+[MMCd] Form.c, Line:5619, No form to return to
+[MMCd] Form.c, Line:5619, No form to return to
+[MMCd] Form.c, Line:5619, No form to return to
+[MMCd] MemoryMgr.c, Line:3651, NULL handle
+[MMCd] MemoryMgr.c, Line:3651, NULL handle
+[MMCd] MemoryMgr.c, Line:3651, NULL handle
+[MMCd] MemoryMgr.c, Line:3651, NULL handle
+[MMCd] Form.c, Line:5619, No form to return to
+[MMCd] mmcd.c, Line:2053, Unknown form!
+[MMCd] mmcd.c, Line:2084, Unknown form!
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:1642, Index out of range
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:1642, Index out of range
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:2027, Invalid ptr: 00000000
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:1642, Index out of range
+[MMCd] Form.c, Line:2914, Invalid index
+[MMCd] Form.c, Line:2914, Invalid index
+[MMCd] Form.c, Line:2914, Invalid index
+[MMCd] Form.c, Line:2914, Invalid index
+[MMCd] MemoryMgr.c, Line:3651, NULL handle
+[MMCd] I:\SimFix\ARM\Core\Emul68K\SrcSlowEmu\Run68K.c, Line:3107, Invalid read from 0002420A
+[MMCd] I:\SimFix\ARM\Core\Emul68K\SrcSlowEmu\Run68K.c, Line:3107, Invalid read from 00024212
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:1642, Index out of range
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:1642, Index out of range
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:1642, Index out of range
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:1642, Index out of range
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:1642, Index out of range
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:1642, Index out of range
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:1642, Index out of range
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:1642, Index out of range
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:1642, Index out of range
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:1642, Index out of range
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:1642, Index out of range
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:1642, Index out of range
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:1642, Index out of range
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:1642, Index out of range
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:1642, Index out of range
+[MMCd] I:\SimFix\ARM\Core\Emul68K\Src\Emul68KCommon.c, Line:1642, Index out of range
+[MMCd] mmcd.c, Line:2415, Unknown form!
+[WRXd] I:\SimFix\ARM\Core\Emul68K\SrcSlowEmu\Run68K.c, Line:2202, Invalid read from 0000010D
+[WRXd] I:\SimFix\ARM\Core\Emul68K\SrcSlowEmu\Run68K.c, Line:2202, Invalid read from 0000010D
+[MMCd] I:\SimFix\ARM\Core\Emul68K\SrcSlowEmu\Run68K.c, Line:3020, Odd aligned read from 0022EDE1
