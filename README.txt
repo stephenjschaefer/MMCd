@@ -30,7 +30,7 @@ SETTING UP DEV ENVIRONMENT IN WINDOWS
 
 	3) Configure Cygwin
 	Launch Cygwin emulation window and register the SDK mount and paths using the following commands:
-		$ mount -f "C:\PalmDev" /PalmDev
+		$ mount -f "C:\PalmDev\MMCd" /PalmDev
 		$ palmdev-prep
 
 	4) Build MMCd

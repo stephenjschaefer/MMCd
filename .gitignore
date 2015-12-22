@@ -1,3 +1,7 @@
+# MMCd Specific Files
+*.ro
+mmcd
+
 # Object files
 *.o
 *.ko

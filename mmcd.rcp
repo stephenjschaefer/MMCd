@@ -266,6 +266,7 @@ begin
   scrollbar id scrollBarId at (right@159 prevtop 7 prevheight) min 0 max 0 pagesize 4
 
   button "Done" doneButtonId at (1 bottom@159 40 auto)
+  NOGRAFFITISTATEINDICATOR
 end
 
 menu id debugFormId
@@ -317,6 +318,7 @@ begin
   checkbox "Upload Log via HotSync" id backupLogCheckId at (center 53 auto auto) font 1
   button "Ok" id okButtonId at (5 bottom@85 36 auto)
   button "Cancel" id cancelButtonId at (prevright+6 prevtop 36 auto)
+  NOGRAFFITISTATEINDICATOR
 end
 
 alert id deleteLogAlertId
@@ -737,7 +739,7 @@ begin
   button "OK" id doneButtonId at (1 bottom@140 36 auto)
 
 /*  checkbox "Compatible graphics" id compatibleGraphicsId at (center prevtop+13 auto auto) font 1 */
-
+  NOGRAFFITISTATEINDICATOR
 end
   
 string id customFormId
