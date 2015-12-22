@@ -16,7 +16,7 @@ SETTING UP DEV ENVIRONMENT IN WINDOWS
 	1) Cygwin Install
 	Download and 32 bit Cygwin installer. (setup-x86.exe)
         Execute installer via command line with the -X argument (setup-x86.exe -X)
-        Add and select "http://prc-tools.sourceforge.net/install" as a download site for the PRC Tools and PILRC packages.
+        Add and select "http://prc-tools.sourceforge.net/install" as a download site.
         Multiselect another download site for the base Cygwin packages.
         Be sure to install the following packages in the Cygwin installer:
 		1)prc-tools: GCC for Palm OS and related tools
@@ -41,7 +41,7 @@ SETTING UP DEV ENVIRONMENT IN WINDOWS
 	5) Run MMCd
 	After successful build, click on launchInSimulator.bat to launch MMCd in the Palm Simulator.
 	If the Preferences dialog is displayed, click the home button to return home and launch MMCd.
-	If you would like to simulate a data connection to a vehicle in the simulator, change Options -> Preferences -> COM to Simulate in MMCd.
+	To simulate a data connection change Options -> Preferences -> COM to Simulate in MMCd.
  
 CHANGELOG
 
